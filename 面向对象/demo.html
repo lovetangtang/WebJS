@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js面向对象</title>
+</head>
+
+<body>
+    <script>
+        //面向对象：基于现实抽象出来的编程思想，主要是以显示为模型的一种编程模式
+        //当今的java,c#,c++,python...都支持面向对象编程
+        //好处就是比以前更加灵活，然后可维护性高。同时更加容易理解
+
+        //面向对象包括：
+        //命名空间 :一个容器，在这个容器里面捆绑所有的功能
+        //类:相当于定义对象的特征。它是对象的属性和方法的模板
+        //对象：等于l类的一个实例
+        //属性:类的一个特征
+        //方法:类的一个功能，打个比方是 人拥有行走的gone能
+        //构造函数：初始化
+        //继承：一个类继承另一个类
+        //封装：统一数据相关的方法，一起使用
+        //抽象：结合复杂的继承，方法，属性的对象模拟现实的模型   
+        //多态：意思呢就是多种形态
+
+        //定义命名空间
+        var MYAPP = MYAPP || {};
+        //子类名
+        MYAPP.ChildApp = {};
+
+        //类名的定义 遵循大驼峰命名 
+        //第一种
+        var Person = function (name, age) {
+            //构造函数初始化，定义属性
+            this.name = name;
+            this.age = age;
+            this.goods = ["钱包", "手机"];
+            //方法
+            this.SayHello = function () {
+                console.log(`你好，我叫${this.name},我${this.age}岁，我有${this.goods[0]+","+this.goods[1]}`)
+            }
+        }
+        //实例一个对象
+        var person = new Person("糖糖", 18);
+        person.goods[0] = "电脑";
+        person.SayHello(); //调用方法问好
+
+        var person_ = new Person("活火", 18);
+        person_.SayHello(); //调用方法问好
+        //第二种 原型定义:每一个对象多有一个属性prototype,它能指向一个对象，即原型对象,它能共享自己的属性和方法
+
+        var Person1 = function () {}
+        Person1.prototype = {
+            name: "",
+            age: "",
+            goods: ["钱包", "手机"],
+            SayHello: function () {
+                console.log(`你好，我叫${this.name},我${this.age}岁，我有${this.goods[0]+","+this.goods[1]}`)
+            }
+        }
+
+        var person1 = new Person1();
+        person1.name = "阿牛";
+        person1.age = "15";
+        person1.goods[0] = "水壶";
+        person1.SayHello();
+
+        var person2 = new Person1();
+        person2.name = "牛牛";
+        person2.age = "16";
+        person2.SayHello();
+
+
+        //继承
+        var Son = function () {
+            Person.call(this)
+        }
+        var son = new Son();
+        son.name = "儿子";
+        son.age = "2";
+        son.SayHello();
+
+        //对象
+        //包含有：字符串/数值/数组/函数
+        //内置对象：String/Date/Array。这些对象都带有属性和方法。布尔/数字/时间/字符串/数学Math/正则表达式/数组/函数/都是一个对象
+
+        //数据类型
+        var str = "str";
+        var num = 123;
+        var bool = true;
+        var n = null;
+        var unde = undefined;
+        var arr = [1, 2, 3];
+        var obj = {
+            name: 'tangtang'
+        };
+        var f = function () {}
+
+        console.log(typeof f);
+        //字面量
+        var obj2 = {};
+        obj2.name = "";
+        //嵌套字面量
+        var obj3 = {
+            name: "",
+            action: function () {}
+        };
+
+        //上传到github
+    </script>
+</body>
+
+</html>
